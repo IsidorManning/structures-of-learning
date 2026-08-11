@@ -1,0 +1,7 @@
+AGENTS.md
+.private/*
+.venv/
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+lean/.lake/
