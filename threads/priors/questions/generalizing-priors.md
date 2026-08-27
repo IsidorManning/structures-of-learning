@@ -3,21 +3,9 @@ id: Q-20260827183639
 type: question
 status: active
 created: 2026-08-27
-parent:
-  - ""
-depends_on:
-  - ""
-related:
-  - ""
-motivated_by:
-  - ""
-experiments:
-  - ""
-constructions:
-  - ""
 ---
 
-# generalizing-priors
+# Generalizing Priors
 
 ## Question
 Does there exist a useful mathematical formalism that packages and unifies both logical and geometric separate manner? A prior may be represented by an algebraic theory, while a network respecting that prior is an algebra of that theory in an appropriate category of parametric maps.
@@ -27,7 +15,7 @@ In my line of reasoning it is important to separate the prior from the neural ne
 
 ## Answers log
 
-- **2026-08-27**; 
+- **2026-08-27:** 
 ## Next steps
 
 - 
@@ -41,4 +29,4 @@ In [[../../../literature#(2021) [Geometric Deep Learning Grids, Groups, Graphs, 
 
 ## Research log
 
-*created: 2026-08-27*
+*created: 2026-08-27.*

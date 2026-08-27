@@ -3,23 +3,16 @@ id: Q-20260827183501
 type: question
 status: active
 created: 2026-08-27
-parent:
-  - ""
-depends_on:
-  - "[[empirical-forms-of-priors]]"
-  - "[[structure-of-priors]]"
-  - "[[morphism-of-priors]]"
-related:
-  - "[[generalizing-priors]]"
-motivated_by:
-  - ""
-experiments:
-  - ""
-constructions:
-  - ""
 ---
 
-# category-of-priors
+# Category of Priors
+## Relations
+- **Depends on:**
+	- [[empirical-forms-of-priors]]
+	- [[structure-of-priors]]
+	- [[morphism-of-priors]]
+- **Related to:**
+	- [[generalizing-priors]]
 
 ## Question
 Does there exist a category of priors? What would morphisms between priors mean theoretically and empirically? Are there examples of a prior being changed and an observation in how that changes the underlying architecture?
@@ -28,7 +21,7 @@ If there is a useful relation between priors, could one model the category of pr
 
 ## Answers log
 
-- **2026-08-27**; 
+- **2026-08-27:** 
 ## Next steps
 
 - 
@@ -39,4 +32,4 @@ If there is a useful relation between priors, could one model the category of pr
 
 ## Research log
 
-*created: 2026-08-27*
+*created: 2026-08-27.*

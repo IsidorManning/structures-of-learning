@@ -3,18 +3,6 @@ id: Q-20260827184041
 type: question
 status: active
 created: 2026-08-27
-parent:
-  - ""
-depends_on:
-  - ""
-related:
-  - ""
-motivated_by:
-  - ""
-experiments:
-  - ""
-constructions:
-  - ""
 ---
 
 # prior-architecture-relations
@@ -23,7 +11,7 @@ constructions:
 Does there exist a useful translation that describes the process of imposing a prior architecturally? How do we associate to each prior its category of realizations? How does this "realization" look like? Is it parameter-restriction, does it result in one canonical architecture or a family of architectures?
 ## Answers log
 
-- **2026-08-27**; 
+- **2026-08-27:** 
 ## Next steps
 
 - 
@@ -35,4 +23,4 @@ In [[../../../literature#(2025) [Categorical Construction of Logically Verifiabl
 
 ## Research log
 
-*created: 2026-08-27*
+*created: 2026-08-27.*

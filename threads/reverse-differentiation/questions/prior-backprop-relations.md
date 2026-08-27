@@ -3,21 +3,12 @@ id: Q-20260827184924
 type: question
 status: active
 created: 2026-08-27
-parent:
-  - "[[../../priors/questions/prior-architecture-relations|prior-architecture-relations]]"
-depends_on:
-  - ""
-related:
-  - ""
-motivated_by:
-  - ""
-experiments:
-  - ""
-constructions:
-  - ""
 ---
 
 # prior-backprop-relations
+## Relations
+- **Subquestion of:**
+	- [[../../priors/questions/prior-architecture-relations|prior-architecture-relations]]
 
 ## Question
 What are logical constraint manifolds manifolds? Where do they live categorically and does there exist concrete examples that perhaps necessitate higher generalizations of CRDC backpropagation, to, for example, purely additive dependent lenses, or something else?
@@ -35,4 +26,4 @@ What are logical constraint manifolds manifolds? Where do they live categoricall
 
 ## Research log
 
-*created: 2026-08-27*
+*created: 2026-08-27.*
