@@ -18,7 +18,7 @@ Does there exist a useful translation that describes the process of imposing a p
 
 ## Exploration
 ### Lawvere Theories to Para
-In [[../../../literature#(2025) [Categorical Construction of Logically Verifiable Neural Architectures](https //arxiv.org/abs/2508.11647)|Categorical Construction of Logically Verifiable Neural Architectures]], a functor $\mathcal{E}:\mathbb{L}\to{}\mathbf{Para}(\mathcal{C})$ is established as a theoretical and prescriptive tool to take a Lawvere theory $\mathbb{L}$, encoding both geometric and logical priors, instantiated as a neural network $f_{\mathbb{L}}$ in $\mathbf{Para}(\mathcal{C})$. 
+In [[../../../literature/nye-2025-categorical-construction|nye-2025-categorical-construction]], a functor $\mathcal{E}:\mathbb{L}\to{}\mathbf{Para}(\mathcal{C})$ is established as a theoretical and prescriptive tool to take a Lawvere theory $\mathbb{L}$, encoding both geometric and logical priors, instantiated as a neural network $f_{\mathbb{L}}$ in $\mathbf{Para}(\mathcal{C})$. 
 
 
 ## Research log
