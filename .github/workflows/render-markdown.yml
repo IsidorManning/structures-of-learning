@@ -1,0 +1,46 @@
+name: Render Obsidian Markdown
+
+on:
+  push:
+    branches: [source]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: publish-rendered-main
+  cancel-in-progress: true
+
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out Obsidian source
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.14"
+
+      - name: Test the converter
+        run: python -m unittest discover -s tests -v
+
+      - name: Validate the complete source snapshot
+        run: python scripts/export_notes.py --source . --output .build/rendered
+
+      - name: Replay source commits as rendered commits
+        if: github.event_name == 'push' && github.ref == 'refs/heads/source'
+        run: |
+          git fetch origin main source
+          python scripts/publish_rendered.py \
+            --source . \
+            --source-ref "${GITHUB_SHA}" \
+            --public-ref origin/main \
+            --public-worktree "${RUNNER_TEMP}/public-main" \
+            --rendered-directory "${RUNNER_TEMP}/rendered"
+          git -C "${RUNNER_TEMP}/public-main" push origin HEAD:main
