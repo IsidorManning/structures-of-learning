@@ -1,4 +1,5 @@
 AGENTS.md
+private/
 .private/*
 .venv/
 __pycache__/
