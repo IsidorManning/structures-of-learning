@@ -5,14 +5,16 @@ status: active
 created: 2026-08-27
 ---
 
+<!-- Generated from the Obsidian source on main. Do not edit this branch directly. -->
+
 # Category of Priors
 ## Relations
 - **Depends on:**
-	- [[empirical-forms-of-priors]]
-	- [[structure-of-priors]]
-	- [[morphism-of-priors]]
+	- [empirical-forms-of-priors](empirical-forms-of-priors.md)
+	- [structure-of-priors](structure-of-priors.md)
+	- [morphism-of-priors](morphism-of-priors.md)
 - **Related to:**
-	- [[generalizing-priors]]
+	- [generalizing-priors](generalizing-priors.md)
 
 ## Question
 Does there exist a category of priors? What would morphisms between priors mean theoretically and empirically? Are there examples of a prior being changed and an observation in how that changes the underlying architecture?

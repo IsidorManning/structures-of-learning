@@ -15,6 +15,8 @@ arxiv: "1912.02292"
 url: https://arxiv.org/abs/1912.02292
 ---
 
+<!-- Generated from the Obsidian source on main. Do not edit this branch directly. -->
+
 # Deep Double Descent: Where Bigger Models and More Data Hurt
 
 [arXiv abstract](https://arxiv.org/abs/1912.02292) · [PDF](https://arxiv.org/pdf/1912.02292)
