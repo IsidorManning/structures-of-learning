@@ -2,7 +2,7 @@ name: Render Obsidian Markdown
 
 on:
   push:
-    branches: [main]
+    branches: [source]
   pull_request:
   workflow_dispatch:
 
@@ -10,7 +10,7 @@ permissions:
   contents: write
 
 concurrency:
-  group: render-markdown-${{ github.ref }}
+  group: publish-rendered-main
   cancel-in-progress: true
 
 jobs:
@@ -30,19 +30,17 @@ jobs:
       - name: Test the converter
         run: python -m unittest discover -s tests -v
 
-      - name: Validate and render tracked files
+      - name: Validate the complete source snapshot
         run: python scripts/export_notes.py --source . --output .build/rendered
 
-      - name: Publish the GitHub-friendly mirror
-        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
-        working-directory: .build/rendered
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Replay source commits as rendered commits
+        if: github.event_name == 'push' && github.ref == 'refs/heads/source'
         run: |
-          git init --initial-branch=rendered
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add --all
-          git commit -m "Render ${GITHUB_SHA}"
-          git remote add origin "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
-          git push --force origin rendered
+          git fetch origin main source
+          python scripts/publish_rendered.py \
+            --source . \
+            --source-ref "${GITHUB_SHA}" \
+            --public-ref origin/main \
+            --public-worktree "${RUNNER_TEMP}/public-main" \
+            --rendered-directory "${RUNNER_TEMP}/rendered"
+          git -C "${RUNNER_TEMP}/public-main" push origin HEAD:main
