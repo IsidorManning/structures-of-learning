@@ -5,6 +5,8 @@ status: active
 created: 2026-08-27
 ---
 
+<!-- Generated from the Obsidian source on main. Do not edit this branch directly. -->
+
 # prior-architecture-relations
 
 ## Questions
@@ -18,7 +20,7 @@ Does there exist a useful translation that describes the process of imposing a p
 
 ## Exploration
 ### Lawvere Theories to Para
-In [[../../../literature/nye-2025-categorical-construction|nye-2025-categorical-construction]], a functor $\mathcal{E}:\mathbb{L}\to{}\mathbf{Para}(\mathcal{C})$ is established as a theoretical and prescriptive tool to take a Lawvere theory $\mathbb{L}$, encoding both geometric and logical priors, instantiated as a neural network $f_{\mathbb{L}}$ in $\mathbf{Para}(\mathcal{C})$. 
+In [nye-2025-categorical-construction](../../../literature/nye-2025-categorical-construction.md), a functor $\mathcal{E}:\mathbb{L}\to{}\mathbf{Para}(\mathcal{C})$ is established as a theoretical and prescriptive tool to take a Lawvere theory $\mathbb{L}$, encoding both geometric and logical priors, instantiated as a neural network $f_{\mathbb{L}}$ in $\mathbf{Para}(\mathcal{C})$. 
 
 
 ## Research log

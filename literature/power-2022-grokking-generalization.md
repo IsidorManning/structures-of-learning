@@ -14,6 +14,8 @@ arxiv: "2201.02177"
 url: https://arxiv.org/abs/2201.02177
 ---
 
+<!-- Generated from the Obsidian source on main. Do not edit this branch directly. -->
+
 # Grokking: Generalization Beyond Overfitting on Small Algorithmic Datasets
 
 [arXiv abstract](https://arxiv.org/abs/2201.02177) · [PDF](https://arxiv.org/pdf/2201.02177)

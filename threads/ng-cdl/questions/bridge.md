@@ -4,10 +4,13 @@ type: question
 status: active
 created: 2026-08-27
 ---
+
+<!-- Generated from the Obsidian source on main. Do not edit this branch directly. -->
+
 # Bridge Between CDL and Neuroalgebraic Geometry
 ## Relations
 - **Motivated by:**
-	- [[../../../literature/marchetti-2025-algebra-unveils|marchetti-2025-algebra-unveils]]
+	- [marchetti-2025-algebra-unveils](../../../literature/marchetti-2025-algebra-unveils.md)
 ## Questions
 In neuroalgebraic geometry, one studies the space of parametric models, called *neuromanifolds*, defined as:
 $$\mathcal{M}:=\{ f_p : X \to Y \mid p\in P\} = \phi_P(\mathcal{C}(X,Y)),$$

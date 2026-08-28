@@ -16,6 +16,8 @@ arxiv: "1910.07065"
 url: https://arxiv.org/abs/1910.07065
 ---
 
+<!-- Generated from the Obsidian source on main. Do not edit this branch directly. -->
+
 # Reverse derivative categories
 
 [arXiv abstract](https://arxiv.org/abs/1910.07065) · [PDF](https://arxiv.org/pdf/1910.07065)

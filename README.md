@@ -1,3 +1,5 @@
+<!-- Generated from the Obsidian source on main. Do not edit this branch directly. -->
+
 # Structures of Learning
 
 A research map for questioning, understanding, and developing mathematical structures of deep learning (and potentially of systems that learn more generally).
