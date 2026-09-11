@@ -23,7 +23,7 @@ If there is a useful relation between priors, could one model the category of pr
 
 ## Answers log
 
-- **2026-08-27:** 
+- **2026-08-27:** Both logical and geometric priors are essentially formalized using the construction of finitary monads. The relationship I see here is that a group action monad is a finitary monad on $\mathbf{Set}$, a Lawvere theory that encodes logical priors is isomorphic to a finitary monad on $\mathbf{Set}$. So my best answer right now is to look further into $\mathbf{Prior}$ as $\mathbf{Mnd}_{f,\mathbf{Set}}$.   
 ## Next steps
 
 - 
