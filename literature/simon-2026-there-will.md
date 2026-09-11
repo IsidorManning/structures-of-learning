@@ -25,6 +25,8 @@ url: https://arxiv.org/abs/2604.21691
 
 <!-- Generated from the Obsidian source on main. Do not edit this branch directly. -->
 
+<!-- Generated from the Obsidian source on main. Do not edit this branch directly. -->
+
 # There Will Be a Scientific Theory of Deep Learning
 
 [arXiv abstract](https://arxiv.org/abs/2604.21691) · [PDF](https://arxiv.org/pdf/2604.21691)

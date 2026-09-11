@@ -15,6 +15,8 @@ url: https://arxiv.org/abs/2104.13478
 
 <!-- Generated from the Obsidian source on main. Do not edit this branch directly. -->
 
+<!-- Generated from the Obsidian source on main. Do not edit this branch directly. -->
+
 # Geometric Deep Learning: Grids, Groups, Graphs, Geodesics, and Gauges
 
 [arXiv abstract](https://arxiv.org/abs/2104.13478) · [PDF](https://arxiv.org/pdf/2104.13478)

@@ -1,5 +1,7 @@
 <!-- Generated from the Obsidian source on main. Do not edit this branch directly. -->
 
+<!-- Generated from the Obsidian source on main. Do not edit this branch directly. -->
+
 # Literature
 
 This index organizes literature thematically. Each work has a separate note containing its bibliographic metadata, summary, relevance, and annotations.

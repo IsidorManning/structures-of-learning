@@ -12,6 +12,8 @@ url: https://arxiv.org/abs/2403.13001
 
 <!-- Generated from the Obsidian source on main. Do not edit this branch directly. -->
 
+<!-- Generated from the Obsidian source on main. Do not edit this branch directly. -->
+
 # Fundamental Components of Deep Learning: A category-theoretic approach
 
 [arXiv abstract](https://arxiv.org/abs/2403.13001) · [PDF](https://arxiv.org/pdf/2403.13001)
