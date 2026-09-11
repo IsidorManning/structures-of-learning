@@ -38,6 +38,8 @@ arxiv: "2501.16496"
 url: https://arxiv.org/abs/2501.16496
 ---
 
+<!-- Generated from the Obsidian source on main. Do not edit this branch directly. -->
+
 # Open Problems in Mechanistic Interpretability
 
 [arXiv abstract](https://arxiv.org/abs/2501.16496) · [PDF](https://arxiv.org/pdf/2501.16496)

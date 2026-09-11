@@ -31,6 +31,8 @@ arxiv: "2402.08871"
 url: https://arxiv.org/abs/2402.08871
 ---
 
+<!-- Generated from the Obsidian source on main. Do not edit this branch directly. -->
+
 # Position: Topological Deep Learning is the New Frontier for Relational Learning
 
 [arXiv abstract](https://arxiv.org/abs/2402.08871) · [PDF](https://arxiv.org/pdf/2402.08871)

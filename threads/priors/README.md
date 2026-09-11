@@ -1,3 +1,5 @@
+<!-- Generated from the Obsidian source on main. Do not edit this branch directly. -->
+
 # Priors
 This thread introduces the central question: Can we construct a functorial theory of prior specification, comparison, combination, realization, and compilation into trainable architectures?
 
