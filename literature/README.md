@@ -14,6 +14,7 @@ This index organizes literature thematically. Each work has a separate note cont
 - [Gavranović et al. (2024) — Categorical Deep Learning is an Algebraic Theory of All Architectures](gavranovic-2024-position-categorical.md)
 - [Cruttwell et al. (2021) — Categorical Foundations of Gradient-Based Learning](cruttwell-2021-categorical-foundations.md)
 - [Nye (2025) — Categorical Construction of Logically Verifiable Neural Architectures](nye-2025-categorical-construction.md)
+- [[maruyama-2025-categorical-equivariant|Maryuama (2025) — Categorical Equivariant Deep Learning: Category-Equivariant Neural Networks and Universal Approximation Theorems]]
 
 ## Reverse differentiation
 
