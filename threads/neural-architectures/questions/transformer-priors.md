@@ -1,0 +1,22 @@
+---
+id: 20261103000216
+type: question
+status: active
+created: 2026-11-03
+---
+
+# What Priors do Transformers Respect?
+
+## Relations
+
+_No relations recorded yet._
+
+## Question
+What priors do transformers and different attention mechanisms respect? Do they respect a certain causality prior? Can causality in sequence models be characterized as a structural prior, and can that characterization explain or derive architectural design choices?
+
+## Updates and answers
+  - **2026-11-03:** 
+
+## Exploration
+
+*Created 2026-11-03.*

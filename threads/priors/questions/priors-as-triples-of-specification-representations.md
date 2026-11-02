@@ -1,9 +1,11 @@
 ---
-id: Q-20260912231152
+id: N-20260912231152
 type: construction
-status: active
+status: finished
 created: 2026-09-12
 ---
+
+This is an initial construction based on a pattern I've seen across literature (See [prior-architecture-relations](prior-architecture-relations.md)). 
 
 Let $\mathcal{C}$ be a base category. I propose that a *prior* is a triple
 $$\Pi=(\mathcal{S},X,Y)$$
@@ -45,7 +47,7 @@ In deep learning, $\mathbf{Para}_{\times}(\mathcal{C})$ consists of:
 2. **1-Morphisms:** Parameterized morphisms $(P,f)\in{}\mathbf{Para}_{\times}(\mathcal{C})(a,b)$, where $P\in{}\mathcal{C}$ and $f:P\times a\to{}b$.
 3. **2-Morphisms:** Reparameterizations.
 
-I am unsure how this picture connects to the general presheaf idea in [presheaf-of-prior-realizations](presheaf-of-prior-realizations.md) of some:
+I am unsure how this picture connects to the general presheaf idea in [presheaf-of-prior-realizations](../constructions/presheaf-of-prior-realizations.md) of some:
 $$F:\mathbf{Prior}^{\text{op}}\to{}\mathbf{Cat}$$
 
 # Examples
