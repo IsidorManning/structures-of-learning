@@ -2,14 +2,11 @@
 
 # Structures of Learning
 
-A research map for questioning, understanding, and developing mathematical structures of deep learning (and potentially of systems that learn more generally).
+A research map for developing abstractions and formal mathematics to understand systems that learn .
 
 My motivation is to contribute to theoretical work that aims to _explain_ the behavior of learning systems through _useful_ mathematical abstractions. The goal is for these abstractions to become not only descriptive and prescriptive, but eventually _predictive_: to lead to falsifiable predictions that can either provide new insight into deep learning or force us to refine the abstractions themselves, bringing them into closer alignment with the phenomena they are meant to describe.
 
-The repository develops this map through questions, mathematical constructions, literature notes, and experiments. It is intentionally a work in progress: questions may be incomplete and informal, conjectures and mathematics may be wrong, and the structure of the map itself will change as my understanding changes.
-
-# Theories & Mathematics
-Currently, the theories mostly being explored in this project are Categorical Deep Learning (CDL) and Neuroalgebriac Geometry.
+The repository develops this map through questions, mathematical constructions, literature notes, and experiments. It is intentionally a work in progress: questions may be incomplete and informal, conjectures and mathematics may be wrong, and the structure of the map itself will change as my understanding changes. I personally see this as a middle-ground between an informal idea and a complete paper.
 
 # Literature & Resources
 
@@ -18,7 +15,7 @@ See [`literature/README.md`](literature/README.md).
 # Reading the repository
 
 - [`main`](https://github.com/IsidorManning/structures-of-learning/tree/main) is the public, GitHub-friendly research map. It is generated automatically.
-- [`source`](https://github.com/IsidorManning/structures-of-learning/tree/source) is the Obsidian source. It intentionally contains relative Obsidian wikilinks.
+- [`source`](https://github.com/IsidorManning/structures-of-learning/tree/source) is the Obsidian source. It intentionally contains relative Obsidian wikilinks. 
 
 I write in Obsidian, so I do not edit the remote `main` branch directly. Instead, changes belong in the Obsidian source and are published automatically.
 

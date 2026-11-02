@@ -10,10 +10,10 @@ created: 2026-08-27
 # prior-architecture-relations
 
 ## Questions
-Does there exist a useful translation that describes the process of imposing a prior architecturally? How do we associate to each prior its category of realizations? How does this "realization" look like? Is it parameter-restriction, does it result in one canonical architecture or a family of architectures?
+Does there exist a useful translation that describes the process of imposing a prior architecturally? How do we associate to each prior its category of realizations? What is the nature of this "realization"? Is it weight-tying, does it result in one canonical architecture or a family of architectures?
 ## Answers log
 
-- **2026-08-27:** 
+- **2026-11-02:** In the context of GDL, a prior (at least a geometric prior) seems to induce a weight-tying condition. This still results in a class of models. In general, I believe priors induce a restricted class of architectures. 
 ## Next steps
 
 - 

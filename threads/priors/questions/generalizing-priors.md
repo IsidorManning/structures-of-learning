@@ -1,7 +1,7 @@
 ---
 id: Q-20260827183639
 type: question
-status: active
+status: finished
 created: 2026-08-27
 ---
 
@@ -21,7 +21,7 @@ In my line of reasoning it is important to separate the prior from the neural ne
 
 ## Answers log
 
-- **2026-08-27:** 
+- **2026-11-02:** There exist generalizations like my current abstraction, but I find this question a bit meaningless as stated. It is not about generalization. 
 ## Next steps
 
 ## Exploration
