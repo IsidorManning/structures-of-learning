@@ -16,12 +16,11 @@ arxiv: "1910.07065"
 url: https://arxiv.org/abs/1910.07065
 ---
 
-<!-- Generated from the Obsidian source on main. Do not edit this branch directly. -->
-
 # Reverse derivative categories
 
 [arXiv abstract](https://arxiv.org/abs/1910.07065) · [PDF](https://arxiv.org/pdf/1910.07065)
 
 ## General summary
 
-## Relevance to the research program
+## Relevancy to the research
+Provides the overarching type of base category often used in deep learning. The category of Euclidean spaces with smooth maps is one example of a (Cartesian) reverse derivative category.

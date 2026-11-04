@@ -15,12 +15,11 @@ arxiv: "2402.15332"
 url: https://arxiv.org/abs/2402.15332
 ---
 
-<!-- Generated from the Obsidian source on main. Do not edit this branch directly. -->
-
 # Position: Categorical Deep Learning is an Algebraic Theory of All Architectures
 
 [arXiv abstract](https://arxiv.org/abs/2402.15332) · [PDF](https://arxiv.org/pdf/2402.15332)
 
 ## General summary
 
-## Relevance to the research program
+## Relevancy for the research
+Seminal paper on categorical deep learning, showing how we can extend the idea of priors to more general contexts.

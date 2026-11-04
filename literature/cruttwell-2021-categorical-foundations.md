@@ -14,12 +14,11 @@ arxiv: "2103.01931"
 url: https://arxiv.org/abs/2103.01931
 ---
 
-<!-- Generated from the Obsidian source on main. Do not edit this branch directly. -->
-
 # Categorical Foundations of Gradient-Based Learning
 
 [arXiv abstract](https://arxiv.org/abs/2103.01931) · [PDF](https://arxiv.org/pdf/2103.01931)
 
 ## General summary
 
-## Relevance to the research program
+## Relevancy to the research
+Establishes a explanatory theory for gradient-based machine learning systems, encompassing ADAM, AdaGrad, Nesterov, and other forms of loss functions.

@@ -14,12 +14,11 @@ arxiv: "2501.18915"
 url: https://arxiv.org/abs/2501.18915
 ---
 
-<!-- Generated from the Obsidian source on main. Do not edit this branch directly. -->
-
 # Algebra Unveils Deep Learning -- An Invitation to Neuroalgebraic Geometry
 
 [arXiv abstract](https://arxiv.org/abs/2501.18915) · [PDF](https://arxiv.org/pdf/2501.18915)
 
 ## General summary
 
-## Relevance to the research program
+## Relevancy for the research
+Seminal paper on neuroalgebraic geometry, another theory which aims to move deep learning closer to a science, by studying the geometric structure of the space of parameterized models.

@@ -1,0 +1,9 @@
+At the end of november, my goals are:
+- Reach out to researchers at the end of November with my findings. Essentially just saying ”I’ve find this particular way or thing to think about priors to be useful, do you think it could be helpful for you or other fellow researchers?”
+- Continue writing and establish a version 1 of structural priors.
+
+My plan is:
+- To formally connect my prior abstraction with a lot of known mathematics, explore the Grothendieck perspective of priors, using the base category $[\mathcal{S},\mathcal{C}]\times[\mathcal{S},\mathcal{C}]^{\text{op}}$. Keep the current formalization but immediately remark and connect it to the broader theory of fibrational category theory, indexed categories, and Grothendieck constructions. This can be very useful epistemologically.
+- I intend to study priors in various architectures, but perhaps the one I will prioritize is Transformers. There are a couple things that attract: Transformers seem to have both geometric priors (like E6-transformers) but also priors outside of GDL like causality/truncation priors. Moreover, it connects to my question of tensoring priors where architectures inherently satisfy multiple priors. It is also one of the most prominent architectures in modern deep learning. This also ties to my architecture dissection thread.
+- Architectural syntax and semantics, Abbott's work: I want to understand the distinction between architectural semantics and architectural syntax, and how priors relate to each functorially. Abbott's work is very interesting here and so I will spend considerable time on his main papers.
+- In general, more extensive work on how priors manifest themselves in families of architectures, and what it says about architectural syntax and implementation. I hope to explore this broader perspective, going outside of GDL priors, while continuously comparing what my current abstraction can and cannot help us understand. 

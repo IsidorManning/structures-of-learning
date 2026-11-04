@@ -4,9 +4,6 @@ type: question
 status: finished
 created: 2026-08-27
 ---
-
-<!-- Generated from the Obsidian source on main. Do not edit this branch directly. -->
-
 # Generalizing Priors
 ## Relations
 - **Motivated by:**

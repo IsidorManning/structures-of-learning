@@ -10,13 +10,11 @@ arxiv: "2403.13001"
 url: https://arxiv.org/abs/2403.13001
 ---
 
-<!-- Generated from the Obsidian source on main. Do not edit this branch directly. -->
-
 # Fundamental Components of Deep Learning: A category-theoretic approach
 
 [arXiv abstract](https://arxiv.org/abs/2403.13001) · [PDF](https://arxiv.org/pdf/2403.13001)
 
 ## General summary
 
-## Relevance to the research program
-
+## Relevancy for the research
+One of the core papers that got me interested in this line of research. Offers a complete picture of how the works established in categorical cybernetics can be applied in deep learning to create a prescriptive and unifying theory of the many components of deep learning.
