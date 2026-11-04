@@ -44,7 +44,7 @@ jobs:
 
       - name: Validate incoming notes
         if: "!contains(github.event.head_commit.message, 'Infrastructure-Deployment: true')"
-        run: python scripts/export_notes.py --source .build/incoming --check
+        run: python scripts/export_notes.py --source .build/incoming --check --notes-only
 
   synchronize:
     needs: render

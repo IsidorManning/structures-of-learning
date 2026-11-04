@@ -16,7 +16,7 @@ import sys
 import tempfile
 
 from export_notes import ExportError, export_repository
-from note_format import clean_markdown
+from note_format import clean_markdown, server_owned
 
 SOURCE_TRAILER_RE = re.compile(r"^Source-Commit: ([0-9a-f]{40,64})$", re.MULTILINE)
 BOT = {"GIT_AUTHOR_NAME": "github-actions[bot]",
@@ -121,7 +121,7 @@ def rendered_tree(repository: Path, ref: str) -> str:
         output = Path(temporary) / "rendered"
         # Intermediate historical metadata may have been repaired by a later
         # commit. Final source/public snapshots are validated strictly below.
-        export_repository(checkout, output, build_index=False, check_metadata=False)
+        export_repository(checkout, output, build_index=False, check_metadata=False, notes_only=True)
         return normalized_tree(repository, directory_tree(repository, output, ref))
 
 
@@ -133,10 +133,6 @@ def tree_entries(repository: Path, ref: str) -> dict[str, tuple[str, str]]:
             mode, _kind, oid = header.split()
             entries[path] = (mode, oid)
     return entries
-
-
-def server_owned(path: str) -> bool:
-    return path.startswith((".github/", "scripts/", "tests/", "obsidian/", "docs/")) or path in {"pyproject.toml", "uv.lock"}
 
 
 def research_tree(repository: Path, ref: str) -> str:
@@ -234,7 +230,7 @@ def publish_head(repository: Path, source_ref: str, public_ref: str) -> tuple[in
     source_head = git(repository, "rev-parse", source_ref).strip()
     public_head = git(repository, "rev-parse", public_ref).strip()
     with worktree(repository, source_head) as checkout:
-        export_repository(checkout)
+        export_repository(checkout, notes_only=True)
     pair = publication_pair(repository, public_head)
     marker = pair[1] if pair else git(repository, "merge-base", public_head, source_head).strip()
     git(repository, "merge-base", "--is-ancestor", marker, source_head)

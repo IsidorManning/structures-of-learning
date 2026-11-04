@@ -6,6 +6,12 @@ START = "<!-- literature-index:start -->"
 END = "<!-- literature-index:end -->"
 
 
+def server_owned(path: str) -> bool:
+    return path.startswith((".github/", "scripts/", "tests/", "obsidian/", "docs/")) or path in {
+        "pyproject.toml", "uv.lock", "README.md", "literature/README.md"
+    }
+
+
 def clean_markdown(text: str, *, strip_index: bool = False) -> str:
     text = re.sub(r"(?m)^" + re.escape(LEGACY_NOTICE) + r"\r?\n(?:\r?\n)?", "", text)
     if strip_index and (START in text or END in text):

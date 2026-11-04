@@ -20,7 +20,7 @@ from dataclasses import dataclass
 from pathlib import Path, PurePosixPath
 from urllib.parse import quote, unquote, urlsplit
 
-from note_format import clean_markdown, START, END
+from note_format import clean_markdown, START, END, server_owned
 
 
 WIKILINK_RE = re.compile(r"(!?)\[\[([^\]\n]+)\]\]")
@@ -355,9 +355,11 @@ def validate_metadata(index: RepositoryIndex) -> list[Diagnostic]:
 
 
 def export_repository(source: Path, output: Path | None = None, *, build_index: bool = True,
-                      check_metadata: bool = True) -> int:
+                      check_metadata: bool = True, notes_only: bool = False) -> int:
     source = source.resolve()
     paths = tracked_files(source)
+    if notes_only:
+        paths = [path for path in paths if not server_owned(str(path))]
     index = RepositoryIndex(source, paths)
     rendered_files: dict[PurePosixPath, str] = {}
     diagnostics = validate_metadata(index) if check_metadata else []
@@ -396,6 +398,7 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     parser.add_argument("--source", type=Path, default=Path("."), help="source Git repository")
     parser.add_argument("--output", type=Path, help="directory for the rendered repository")
     parser.add_argument("--check", action="store_true", help="validate only; write no files")
+    parser.add_argument("--notes-only", action="store_true", help="validate/export research content without GitHub-owned infrastructure and indexes")
     args = parser.parse_args(argv)
     if not args.check and args.output is None:
         parser.error("--output is required unless --check is used")
@@ -405,7 +408,7 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
 def main(argv: list[str] | None = None) -> int:
     args = parse_args(argv)
     try:
-        count = export_repository(args.source, None if args.check else args.output)
+        count = export_repository(args.source, None if args.check else args.output, notes_only=args.notes_only)
     except (ExportError, OSError, subprocess.CalledProcessError, ValueError) as error:
         print(error, file=sys.stderr)
         return 1

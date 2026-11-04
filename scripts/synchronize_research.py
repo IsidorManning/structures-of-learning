@@ -37,7 +37,7 @@ def synchronize(repository: Path, source_ref: str, public_ref: str) -> tuple[str
                                  f"{message}\n\nPublic-Commit: {incoming_commit}", incoming_commit)
         current, previous = merged, incoming
     with worktree(repository, source) as checkout:
-        export_repository(checkout)
+        export_repository(checkout, notes_only=True)
     _, main = publish_head(repository, source, public)
     with worktree(repository, main) as checkout:
         export_repository(checkout)

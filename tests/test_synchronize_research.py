@@ -82,7 +82,7 @@ class SynchronizeTests(unittest.TestCase):
         self.assertEqual(refs, git(self.repo, "show-ref"))
 
     def test_generated_index_edit_is_rebuilt_without_becoming_source_prose(self):
-        self.edit("source", {"literature/README.md": "# Literature\n\nHandwritten introduction.\n\n"})
+        self.edit("main", {"literature/README.md": "# Literature\n\nHandwritten introduction.\n\n"})
         source, main = synchronize(self.repo, "source", "main")
         self.accept(source, main)
         text = self.content("main", "literature/README.md").replace("No literature notes yet.", "Stale generated content.")
@@ -215,4 +215,13 @@ class SynchronizeTests(unittest.TestCase):
         self.assertEqual("new server", self.content(main, "scripts/server.txt"))
         self.assertEqual("old server", self.content(source, "scripts/server.txt"))
         self.assertNotIn("tests/server.txt", git(self.repo, "ls-tree", "-r", "--name-only", source))
+
+    def test_public_readmes_do_not_overwrite_vault_indexes(self):
+        self.edit("main", {"README.md": "# Public guide\n", "literature/README.md": "# Literature\n\nPublic introduction.\n"})
+        original = self.edit("source", {"README.md": "# Private vault guide\n", "literature/README.md": "# Local literature index\n"})
+        source, main = synchronize(self.repo, "source", "main")
+        self.assertEqual(original, source)
+        self.assertEqual("# Private vault guide\n", self.content(source, "README.md"))
+        self.assertEqual("# Public guide\n", self.content(main, "README.md"))
+        self.assertIn("Public introduction.", self.content(main, "literature/README.md"))
 

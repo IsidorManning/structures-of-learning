@@ -144,3 +144,7 @@ branch needs only the hidden workflow dispatcher; it does not need local
 dependencies or build scripts to publish notes. Infrastructure paths are
 excluded from content synchronization.
 
+The public root README and literature README are maintained on `main` as well.
+Their publication updates do not rewrite your Obsidian index files. The earlier
+manual literature index is preserved in `docs/literature-index-before-automation.md`.
+
