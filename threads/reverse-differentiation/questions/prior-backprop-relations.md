@@ -5,10 +5,6 @@ status: active
 created: 2026-08-27
 ---
 
-<!-- Generated from the Obsidian source on main. Do not edit this branch directly. -->
-
-<!-- Generated from the Obsidian source on main. Do not edit this branch directly. -->
-
 # prior-backprop-relations
 ## Relations
 - **Subquestion of:**

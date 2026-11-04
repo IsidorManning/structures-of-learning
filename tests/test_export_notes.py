@@ -10,6 +10,7 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "scripts"))
 
 from export_notes import ExportError, export_repository  # noqa: E402
+from note_format import LEGACY_NOTICE
 
 
 class ExportNotesTests(unittest.TestCase):
@@ -78,6 +79,28 @@ class ExportNotesTests(unittest.TestCase):
 
         self.assertIn("![Diagram](../assets/diagram.png)", (self.output / "notes/note.md").read_text())
 
+    def test_drops_legacy_banner_without_adding_a_new_one(self) -> None:
+        self.add("note.md", "---\nid: Q-clean\n---\n\n" + LEGACY_NOTICE + "\n\n# Note\n")
+        export_repository(self.repo, self.output)
+        rendered = (self.output / "note.md").read_text()
+        self.assertNotIn(LEGACY_NOTICE, rendered)
+        self.assertEqual("---\nid: Q-clean\n---\n\n# Note\n", rendered)
+
+    def test_rendering_normalizes_a_missing_final_newline(self) -> None:
+        self.add("note.md", "# Note")
+        export_repository(self.repo, self.output)
+        self.assertEqual("# Note\n", (self.output / "note.md").read_text())
+
+    def test_validates_normal_markdown_links_and_ignores_code(self) -> None:
+        self.add("target space.md", "# Target\n\n## Result\n")
+        self.add("note.md", "[Result](target%20space.md#result)\n`[Example](missing.md)`\n[Web](https://example.org)\n")
+        export_repository(self.repo, self.output)
+        self.add("note.md", "[Missing](missing.md)\n[Wrong heading](target%20space.md#wrong)\n")
+        with self.assertRaises(ExportError) as context:
+            export_repository(self.repo, self.output)
+        self.assertIn("Markdown target does not exist", str(context.exception))
+        self.assertIn("Markdown heading does not exist", str(context.exception))
+
     def test_exports_only_git_tracked_files(self) -> None:
         self.add("public.md", "# Public\n")
         private = self.repo / "private.md"
@@ -116,3 +139,4 @@ class ExportNotesTests(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+

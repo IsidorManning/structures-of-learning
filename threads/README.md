@@ -1,5 +1,3 @@
-<!-- Generated from the Obsidian source on main. Do not edit this branch directly. -->
-
 # Threads
 Threads are broad, ongoing "subprograms" of research within this repository. 
 

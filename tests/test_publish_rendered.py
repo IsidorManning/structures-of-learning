@@ -117,7 +117,8 @@ class PublishRenderedTests(unittest.TestCase):
     def test_configures_plain_push_to_remote_source(self) -> None:
         subprocess.run(["git", "-C", str(self.repo), "remote", "add", "origin", "https://example.invalid/repo.git"], check=True)
         subprocess.run(
-            ["bash", str(ROOT / "scripts/configure-obsidian-git.sh")],
+            (["powershell.exe", "-NoProfile", "-File", str(ROOT / "scripts/configure-obsidian-git.ps1")]
+             if os.name == "nt" else ["bash", str(ROOT / "scripts/configure-obsidian-git.sh")]),
             cwd=self.repo,
             check=True,
             text=True,
@@ -139,3 +140,4 @@ class PublishRenderedTests(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+

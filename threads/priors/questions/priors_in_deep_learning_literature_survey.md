@@ -1,5 +1,3 @@
-<!-- Generated from the Obsidian source on main. Do not edit this branch directly. -->
-
 # Priors in Deep Learning: Empirical Forms, Realizations, and Their Relation to Generalization
 
 **A literature survey and research-program memo for _Structures of Learning_**  

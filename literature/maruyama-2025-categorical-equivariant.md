@@ -10,8 +10,6 @@ arxiv: "2511.18417"
 url: https://arxiv.org/abs/2511.18417
 ---
 
-<!-- Generated from the Obsidian source on main. Do not edit this branch directly. -->
-
 # Categorical Equivariant Deep Learning: Category-Equivariant Neural Networks and Universal Approximation Theorems
 
 [arXiv abstract](https://arxiv.org/abs/2511.18417) · [PDF](https://arxiv.org/pdf/2511.18417)

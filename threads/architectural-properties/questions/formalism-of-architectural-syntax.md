@@ -5,8 +5,6 @@ status: active
 created: 2026-09-06
 ---
 
-<!-- Generated from the Obsidian source on main. Do not edit this branch directly. -->
-
 # formalism-of-architectural-syntax
 
 ## Relations

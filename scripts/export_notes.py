@@ -18,15 +18,17 @@ import unicodedata
 from collections import Counter, defaultdict
 from dataclasses import dataclass
 from pathlib import Path, PurePosixPath
-from urllib.parse import quote
+from urllib.parse import quote, unquote, urlsplit
+
+from note_format import clean_markdown, START, END
 
 
 WIKILINK_RE = re.compile(r"(!?)\[\[([^\]\n]+)\]\]")
+MARKDOWN_LINK_RE = re.compile(r'!?\[[^\]\n]*\]\((?:<([^>\n]*)>|([^\s)\n]+))(?:[ \t]+["\'][^\n]*?["\'])?\)')
 HEADING_RE = re.compile(r"^(#{1,6})[ \t]+(.+?)[ \t]*#*[ \t]*$")
 FENCE_RE = re.compile(r"^[ \t]{0,3}(`{3,}|~{3,})")
 FRONTMATTER_FIELD_RE = re.compile(r"^(id|citekey):[ \t]*(.+?)[ \t]*$", re.MULTILINE)
 IMAGE_EXTENSIONS = {".avif", ".gif", ".jpeg", ".jpg", ".png", ".svg", ".webp"}
-NOTICE = "<!-- Generated from the Obsidian source on main. Do not edit this branch directly. -->"
 
 
 @dataclass(frozen=True, order=True)
@@ -276,9 +278,20 @@ def render_markdown(index: RepositoryIndex, path: PurePosixPath) -> tuple[str, l
     output_lines: list[str] = []
     fence: str | None = None
     in_comment = False
+    in_generated_index = False
+    if str(path) == "literature/README.md":
+        clean_markdown(body, strip_index=True)  # Validate the marker pair.
     body_line = index.body_start_lines[path]
     for offset, line in enumerate(body.splitlines(keepends=True)):
         line_number = body_line + offset
+        if str(path) == "literature/README.md" and fence is None:
+            if line.strip() == START:
+                in_generated_index = True
+            if in_generated_index:
+                output_lines.append(line)
+                if line.strip() == END:
+                    in_generated_index = False
+                continue
         fence_match = FENCE_RE.match(line)
         if fence_match:
             marker = fence_match.group(1)
@@ -293,6 +306,18 @@ def render_markdown(index: RepositoryIndex, path: PurePosixPath) -> tuple[str, l
             continue
 
         def transform(segment: str) -> str:
+            for link in MARKDOWN_LINK_RE.finditer(segment):
+                destination = link.group(1) if link.group(1) is not None else link.group(2)
+                parts = urlsplit(destination)
+                if parts.scheme or parts.netloc:
+                    continue
+                target = normalise_relative(path, unquote(parts.path)) if parts.path else path
+                if target is None or target not in index.paths:
+                    diagnostics.append(Diagnostic(path, line_number, f"Markdown target does not exist: {destination}"))
+                elif parts.fragment and target in index.headings:
+                    if unquote(parts.fragment) not in index.headings[target][1]:
+                        diagnostics.append(Diagnostic(path, line_number, f"Markdown heading does not exist: {destination}"))
+
             def replace(match: re.Match[str]) -> str:
                 rendered, error = render_link(index, path, bool(match.group(1)), match.group(2))
                 if error:
@@ -309,11 +334,7 @@ def render_markdown(index: RepositoryIndex, path: PurePosixPath) -> tuple[str, l
         output_lines.append(rendered_line)
 
     rendered_body = "".join(output_lines)
-    if frontmatter:
-        separator = "" if frontmatter.endswith("\n\n") else "\n"
-        rendered = frontmatter + separator + NOTICE + "\n\n" + rendered_body.lstrip("\n")
-    else:
-        rendered = NOTICE + "\n\n" + rendered_body
+    rendered = clean_markdown(frontmatter + rendered_body)
     return rendered, diagnostics
 
 
@@ -333,12 +354,13 @@ def validate_metadata(index: RepositoryIndex) -> list[Diagnostic]:
     return diagnostics
 
 
-def export_repository(source: Path, output: Path | None = None) -> int:
+def export_repository(source: Path, output: Path | None = None, *, build_index: bool = True,
+                      check_metadata: bool = True) -> int:
     source = source.resolve()
     paths = tracked_files(source)
     index = RepositoryIndex(source, paths)
     rendered_files: dict[PurePosixPath, str] = {}
-    diagnostics = validate_metadata(index)
+    diagnostics = validate_metadata(index) if check_metadata else []
     for path in sorted(index.markdown_paths):
         rendered, file_diagnostics = render_markdown(index, path)
         rendered_files[path] = rendered
@@ -361,6 +383,11 @@ def export_repository(source: Path, output: Path | None = None) -> int:
             destination.write_text(rendered_files[path], encoding="utf-8")
         else:
             shutil.copy2(source / path, destination)
+    # Build from the exported snapshot: CI has no access to the personal vault.
+    if build_index and (output / "literature").is_dir():
+        from build_literature_index import update_readme
+
+        update_readme(output / "literature")
     return len(paths)
 
 
@@ -389,3 +416,4 @@ def main(argv: list[str] | None = None) -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
+
