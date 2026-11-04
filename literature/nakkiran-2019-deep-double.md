@@ -21,4 +21,4 @@ url: https://arxiv.org/abs/1912.02292
 
 ## General summary
 
-## Relevance to the research program
+## Relevancy for the research

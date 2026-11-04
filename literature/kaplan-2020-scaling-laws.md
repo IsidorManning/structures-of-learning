@@ -25,4 +25,5 @@ url: https://arxiv.org/abs/2001.08361
 
 ## General summary
 
-## Relevance to the research program
+## Relevancy for the research
+Canonical paper on scaling laws.

@@ -4,7 +4,6 @@ type: question
 status: finished
 created: 2026-08-27
 ---
-
 # Generalizing Priors
 ## Relations
 - **Motivated by:**

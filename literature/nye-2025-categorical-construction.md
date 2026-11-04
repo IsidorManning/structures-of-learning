@@ -16,5 +16,5 @@ url: https://arxiv.org/abs/2508.11647
 
 ## General summary
 
-## Relevance to the research program
-
+## Relevancy for the research
+Talks specifically about a possible (although rather ill-posed) connection between priors and architectural semantics. Also a rare paper talking about priors as Lawvere theories.

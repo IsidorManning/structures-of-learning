@@ -22,4 +22,5 @@ url: https://arxiv.org/abs/1910.07065
 
 ## General summary
 
-## Relevance to the research program
+## Relevancy to the research
+Provides the overarching type of base category often used in deep learning. The category of Euclidean spaces with smooth maps is one example of a (Cartesian) reverse derivative category.

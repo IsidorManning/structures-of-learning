@@ -20,8 +20,7 @@ url: https://arxiv.org/abs/2104.13478
 ## General summary
 
 ## Relevance to the research program
-Some questions relevant to this paper:
-- How exactly are we "deriving" architectures mathematically? Are we deriving a class of architectures? What sort of unique characteristic is it that we derive that determines an architecture?
+Demonstrates what a prescriptive theory of priors looks like, specifically of geometric priors. A great example of not only why priors matter in deep learning, but how it helps explain architectures and their implementations. Directly relevant since it it one of the seminal papers on priors.
 
 # Priors change the function space
 Taken from 

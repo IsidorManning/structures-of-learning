@@ -4,7 +4,6 @@ type: construction
 status: active
 created: 2026-08-27
 ---
-
 # Presheaf of Prior Realizations
 We might specify $\mathbf{Prior}$ to be the category of Lawvere theories or some other form of algebraic theory:
 $$\mathbf{Prior}=\mathbf{Law}\cong{}\mathbf{Mnd}_{f}(\mathbf{Set})$$

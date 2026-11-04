@@ -16,5 +16,5 @@ url: https://arxiv.org/abs/2403.13001
 
 ## General summary
 
-## Relevance to the research program
-
+## Relevancy for the research
+One of the core papers that got me interested in this line of research. Offers a complete picture of how the works established in categorical cybernetics can be applied in deep learning to create a prescriptive and unifying theory of the many components of deep learning.

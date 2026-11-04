@@ -21,4 +21,5 @@ url: https://arxiv.org/abs/2402.15332
 
 ## General summary
 
-## Relevance to the research program
+## Relevancy for the research
+Seminal paper on categorical deep learning, showing how we can extend the idea of priors to more general contexts.

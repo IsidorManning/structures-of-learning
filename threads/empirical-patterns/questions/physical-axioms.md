@@ -4,7 +4,6 @@ type: question
 status: active
 created: 2026-08-27
 ---
-
 # physical-axioms
 
 ## Relations

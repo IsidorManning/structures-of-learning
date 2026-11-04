@@ -20,4 +20,5 @@ url: https://arxiv.org/abs/2501.18915
 
 ## General summary
 
-## Relevance to the research program
+## Relevancy for the research
+Seminal paper on neuroalgebraic geometry, another theory which aims to move deep learning closer to a science, by studying the geometric structure of the space of parameterized models.

@@ -16,4 +16,5 @@ url: https://arxiv.org/abs/2511.18417
 
 ## General summary
 
-## Relevance to the research program
+## Relevancy for the research
+Perhaps one of the closest related work to what I am doing. Would be very interesting to see the specific connections.

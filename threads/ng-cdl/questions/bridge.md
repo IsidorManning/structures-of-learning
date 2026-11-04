@@ -4,7 +4,6 @@ type: question
 status: active
 created: 2026-08-27
 ---
-
 # Bridge Between CDL and Neuroalgebraic Geometry
 ## Relations
 - **Motivated by:**
