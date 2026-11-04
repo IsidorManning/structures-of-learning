@@ -48,7 +48,7 @@ jobs:
 
   synchronize:
     needs: render
-    if: github.event_name != 'pull_request' && !contains(github.event.head_commit.message, 'Infrastructure-Deployment: true')
+    if: "github.event_name != 'pull_request' && !contains(github.event.head_commit.message, 'Infrastructure-Deployment: true')"
     runs-on: ubuntu-latest
     permissions:
       contents: write
