@@ -23,7 +23,7 @@ Do priors require symmetric monoidal structure, cartesian structure, multi-sorte
 ## Answers log
 
 - **2026-08-27:** Both logical and geometric priors are essentially formalized using the construction of finitary monads. The relationship I see here is that a group action monad is a finitary monad on $\mathbf{Set}$, a Lawvere theory that encodes logical priors is isomorphic to a finitary monad on $\mathbf{Set}$. So my best answer right now is to look further into $\mathbf{Prior}$ as $\mathbf{Mnd}_{f,\mathbf{Set}}$. 
-- **2026-09-23:** As I see it now, a "prior" isn't really *a* monad, or *a* Lawvere theory. A prior is a broader, more general structure as in [[priors-as-triples-of-specification-representations|priors-as-triples-of-specification-representations]]. The pattern is that a prior is a specification in the form of a category (*like* a Lawvere theory *or* a monad *or* a PROP) with two representations, and naturality between representations encode the idea of respecting a prior.
+- **2026-09-23:** As I see it now, a "prior" isn't really *a* monad, or *a* Lawvere theory. A prior is a broader, more general structure as in [[../constructions/priors-as-triples-of-specification-representations|priors-as-triples-of-specification-representations]]. The pattern is that a prior is a specification in the form of a category (*like* a Lawvere theory *or* a monad *or* a PROP) with two representations, and naturality between representations encode the idea of respecting a prior.
 
 ## Exploration
 The general pattern across many forms of priors is that it consists a specification, a way to transform the specification to input data, and a separate way to transform it to output data. This is described functorially, where one maps abstract data types in the specification to concrete data spaces in a base category. Then, a model (technically, a morphism in some relevant base category), *respects the prior* if it is composed out of components that form a natural transformation between the specification transformations.
@@ -71,12 +71,12 @@ $$\begin{align}
 ### Priors as PROPs
 It is important to establish the relations between monads and PROPs, as they are fundamentally different ways to encode algebraic theories. First, PROPs are a generalization of Lawvere theories. The general symmetric monoidal structure of a PROP allows it to encode multi-output operations, whereas in Lawvere theories, such operation collapses to $f : m → 1$ by the universal property of the (cartesian) product. Since we want access to these multi-output operations (e.g., attention mechanisms), we favor PROPs over Lawvere theories. This also allows us to model complex tasks where the neural network might output many metrics (e.g. detecting objects and predicting their coordinates). 
 
-Nonetheless, a prior specification is a PROP, representations are models, and a admissible model is a monoidal natural transformation. Interestingly, we can see that the space of natural transformations is isomorphic to monoidal natural transformations in the case in [[priors-as-triples-of-specification-representations|priors-as-triples-of-specification-representations]]. 
+Nonetheless, a prior specification is a PROP, representations are models, and a admissible model is a monoidal natural transformation. Interestingly, we can see that the space of natural transformations is isomorphic to monoidal natural transformations in the case in [[../constructions/priors-as-triples-of-specification-representations|priors-as-triples-of-specification-representations]]. 
 
 We can also use colored PROPs to describe even more general syntax.
 
 ## A path towards studying priors axiomatically
-Based on this pattern, I develop [[priors-as-triples-of-specification-representations|priors-as-triples-of-specification-representations]].
+Based on this pattern, I develop [[../constructions/priors-as-triples-of-specification-representations|priors-as-triples-of-specification-representations]].
 
 ## Research log
 

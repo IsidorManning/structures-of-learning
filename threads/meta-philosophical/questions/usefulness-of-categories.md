@@ -19,4 +19,16 @@ When is category theory useful in my research program? In what ways can a catego
 
 ## Exploration
 
+## What do I believe?
+- Category theory in agentic systems
+- Category theory as studying compositional effects
+- Category theory as studying seemingly simple invariants. Makes the structure much clearer.
+- 
+
+### An example in databases
+
+### How are categories useful in deep learning today?
+
+### Where do categories make something harder to understand?
+
 *Created 2026-11-03.*
