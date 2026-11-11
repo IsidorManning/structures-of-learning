@@ -218,54 +218,87 @@ def render_link(
     return f"[{label}]({destination})", None
 
 
+def escaped(text: str, position: int) -> bool:
+    """Whether a delimiter is preceded by an odd number of backslashes."""
+    start = position
+    while start and text[start - 1] == "\\":
+        start -= 1
+    return (position - start) % 2 == 1
+
+
+def math_end(line: str, delimiter: str, start: int) -> int:
+    for match in re.finditer(re.escape(delimiter), line[start:]):
+        position = start + match.start()
+        if escaped(line, position):
+            continue
+        if delimiter == "$" and (
+            position == 0 or line[position - 1].isspace()
+            or line[position - 1] == "$"
+            or (position + 1 < len(line) and (line[position + 1].isdigit() or line[position + 1] == "$"))
+        ):
+            continue
+        return position
+    return -1
+
+
 def render_line_segments(
     line: str,
     transform,
     in_comment: bool,
-) -> tuple[str, bool]:
-    """Apply transform outside inline code and HTML comments."""
+    math_delimiter: str | None = None,
+    following_lines: str = "",
+) -> tuple[str, bool, str | None]:
+    """Apply transform outside code, comments, and TeX math; retain display state."""
     result: list[str] = []
     cursor = 0
-    code_delimiter: str | None = None
     while cursor < len(line):
-        if in_comment:
-            end = line.find("-->", cursor)
+        if in_comment or math_delimiter:
+            closing = "-->" if in_comment else math_delimiter
+            end = line.find(closing, cursor) if in_comment else math_end(line, closing, cursor)
             if end < 0:
                 result.append(line[cursor:])
-                return "".join(result), True
-            result.append(line[cursor : end + 3])
-            cursor = end + 3
-            in_comment = False
+                break
+            result.append(line[cursor:end + len(closing)])
+            cursor = end + len(closing)
+            in_comment, math_delimiter = False, None
             continue
-        if code_delimiter is not None:
-            end = line.find(code_delimiter, cursor)
-            if end < 0:
-                result.append(line[cursor:])
-                return "".join(result), in_comment
-            result.append(line[cursor : end + len(code_delimiter)])
-            cursor = end + len(code_delimiter)
-            code_delimiter = None
-            continue
-        comment = line.find("<!--", cursor)
-        tick = line.find("`", cursor)
-        candidates = [(position, kind) for position, kind in ((comment, "comment"), (tick, "code")) if position >= 0]
-        if not candidates:
+        token = None
+        for match in re.finditer(r"<!--|`+|\$\$|\$|\\\(|\\\[", line[cursor:]):
+            position = cursor + match.start()
+            marker = match.group()
+            if escaped(line, position):
+                continue
+            if marker == "$":
+                # An unmatched dollar/currency amount must not hide real links.
+                if position + 1 == len(line) or line[position + 1].isspace():
+                    continue
+                if math_end(line, "$", position + 1) < 0:
+                    continue
+            if marker in {"$$", r"\(", r"\["}:
+                closing = {r"\(": r"\)", r"\[": r"\]"}.get(marker, marker)
+                if math_end(line + following_lines, closing, position + len(marker)) < 0:
+                    continue
+            token = (position, marker)
+            break
+        if token is None:
             result.append(transform(line[cursor:]))
             break
-        position, kind = min(candidates)
+        position, marker = token
         result.append(transform(line[cursor:position]))
-        if kind == "comment":
+        result.append(marker)
+        cursor = position + len(marker)
+        if marker == "<!--":
             in_comment = True
-            result.append("<!--")
-            cursor = position + 4
+        elif marker.startswith("`"):
+            end = line.find(marker, cursor)
+            if end < 0:
+                result.append(line[cursor:])
+                break
+            result.append(line[cursor:end + len(marker)])
+            cursor = end + len(marker)
         else:
-            end = position
-            while end < len(line) and line[end] == "`":
-                end += 1
-            code_delimiter = line[position:end]
-            result.append(code_delimiter)
-            cursor = end
-    return "".join(result), in_comment
+            math_delimiter = {r"\(": r"\)", r"\[": r"\]"}.get(marker, marker)
+    return "".join(result), in_comment, math_delimiter
 
 
 def render_markdown(index: RepositoryIndex, path: PurePosixPath) -> tuple[str, list[Diagnostic]]:
@@ -279,11 +312,14 @@ def render_markdown(index: RepositoryIndex, path: PurePosixPath) -> tuple[str, l
     fence: str | None = None
     in_comment = False
     in_generated_index = False
+    math_delimiter: str | None = None
     if str(path) == "literature/README.md":
         clean_markdown(body, strip_index=True)  # Validate the marker pair.
     body_line = index.body_start_lines[path]
+    remaining_body = body
     for offset, line in enumerate(body.splitlines(keepends=True)):
         line_number = body_line + offset
+        remaining_body = remaining_body[len(line):]
         if str(path) == "literature/README.md" and fence is None:
             if line.strip() == START:
                 in_generated_index = True
@@ -292,7 +328,7 @@ def render_markdown(index: RepositoryIndex, path: PurePosixPath) -> tuple[str, l
                 if line.strip() == END:
                     in_generated_index = False
                 continue
-        fence_match = FENCE_RE.match(line)
+        fence_match = FENCE_RE.match(line) if not math_delimiter and not in_comment else None
         if fence_match:
             marker = fence_match.group(1)
             if fence is None:
@@ -330,7 +366,9 @@ def render_markdown(index: RepositoryIndex, path: PurePosixPath) -> tuple[str, l
 
             return WIKILINK_RE.sub(replace, segment)
 
-        rendered_line, in_comment = render_line_segments(line, transform, in_comment)
+        rendered_line, in_comment, math_delimiter = render_line_segments(
+            line, transform, in_comment, math_delimiter, remaining_body
+        )
         output_lines.append(rendered_line)
 
     rendered_body = "".join(output_lines)

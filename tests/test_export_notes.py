@@ -101,6 +101,45 @@ class ExportNotesTests(unittest.TestCase):
         self.assertIn("Markdown target does not exist", str(context.exception))
         self.assertIn("Markdown heading does not exist", str(context.exception))
 
+    def test_preserves_math_and_still_converts_adjacent_links(self) -> None:
+        self.add("target.md", "# Target\n")
+        expressions = [
+            r"$[\mathcal{S},\mathcal{C}](X_{1},X_{2}F)$",
+            "$$\\begin{align}\n[S,C](X,Y) + [[not-a-link]]\n\\end{align}$$",
+            r"\([S,C](X,Y) + [[not-a-link]]\)",
+            "\\[\n[S,C](X,Y) + [[not-a-link]]\n\\]",
+            r"$x + \$ + [S,C](X,Y)$",
+            r"$`[S,C](X,Y)`$",
+            "```math\n[S,C](X,Y)\n```",
+        ]
+        for expression in expressions:
+            with self.subTest(expression=expression):
+                content = "[[target]]\n" + expression + "\n[[target]]\n"
+                self.add("note.md", content)
+                export_repository(self.repo, self.output)
+                self.assertEqual(content.replace("[[target]]", "[target](target.md)"),
+                                 (self.output / "note.md").read_text())
+                self.add("note.md", expression + "\n[missing](missing.md)\n")
+                with self.assertRaisesRegex(ExportError, "Markdown target does not exist"):
+                    export_repository(self.repo)
+
+    def test_links_on_same_line_as_math(self) -> None:
+        self.add("target.md", "# Target\n")
+        self.add("note.md", "[[target]] $[S,C](X,Y)$ [[target]]\n")
+        export_repository(self.repo, self.output)
+        self.assertEqual("[target](target.md) $[S,C](X,Y)$ [target](target.md)\n",
+                         (self.output / "note.md").read_text())
+        self.add("note.md", "$[S,C](X,Y)$ [missing](missing.md)\n")
+        with self.assertRaisesRegex(ExportError, "Markdown target does not exist"):
+            export_repository(self.repo)
+
+    def test_literal_dollars_code_and_comments_do_not_hide_links(self) -> None:
+        for prefix in [r"\$", "$5 and $10", "$unclosed", "`$$`", "<!-- $$ -->", r"\[Section 6,", "$$unclosed"]:
+            with self.subTest(prefix=prefix):
+                self.add("note.md", prefix + " [missing](missing.md)\n")
+                with self.assertRaisesRegex(ExportError, "Markdown target does not exist"):
+                    export_repository(self.repo)
+
     def test_exports_only_git_tracked_files(self) -> None:
         self.add("public.md", "# Public\n")
         private = self.repo / "private.md"
