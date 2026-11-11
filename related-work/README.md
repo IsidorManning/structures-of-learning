@@ -1,0 +1,1 @@
+Here I discuss closely related works and their relations to my research. My goal is to elaborate on the choices I make regarding, for example, choice of mathematical tools, comparisons of abstractions, and generalizations.
